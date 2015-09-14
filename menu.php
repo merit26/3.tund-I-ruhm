@@ -12,11 +12,10 @@
 		
 	<?php
 	//ükskõik mis lehe puhul näitab linki, home lehe puhul nime	
-		if($page_file_name != "login.php") { ?>
-			
-	      <li><a href="login.php">Logi sisse</a></li>
-		<?php } else { ?>	
-		  <li>Logi sisse</li>
-		<?php } ?>
-		
+		if($page_file_name != "login.php") { 
+			echo '<li><a href="login.php">Logi sisse</a></li>';
+		} else { 	
+		   echo '<li>Logi sisse</li>';
+		 } 
+	?>	
 </ul>

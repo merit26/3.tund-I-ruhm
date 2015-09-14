@@ -10,7 +10,8 @@
 	$email_error = "" ;
 	$password_error = "" ;
 	$comment_error = "" ;
-
+      //Muutujad väärtustega
+	 $email = "";
 
 	// kontrolli ainult siis, kui kasutaja vajutab "logi sisse" nuppu
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -18,6 +19,11 @@
 		//kontrollime, et e-post ei oleks tühi		
 		if(empty($_POST["email"])) { 
 			$email_error = "Ei saa olla tühi";
+		} else {
+			
+			//annan väärtuse
+			$email = $_POST["email"];
+			
 		}
 		//kontrollime parooli	
 		if(empty($_POST["password"])) { 
@@ -47,8 +53,9 @@
 <?php require_once("../header.php"); ?>
 	
 		<h2>Login</h2>
-		<form action="user_form.php" method="post">
-			<input name="email" type="email" placeholder="E-post">* <?php echo $email_error; ?><br> <br>
+		
+		<form action="<?php echo $_SERVER["PHP_SELF"]; method="post"?>"
+			<input name="email" type="email" placeholder="E-post">* value="<?php echo $email; ?>" <?php echo $email_error; ?><br> <br>
 			<input name="password" type="password" placeholder="parool">*
 <?php echo $password_error; ?> <br> <br>
 
