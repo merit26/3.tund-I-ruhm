@@ -12,7 +12,8 @@
 	$comment_error = "" ;
       //Muutujad väärtustega
 	 $email = "";
-	 $password = "";	
+	 $password = "";
+	 $comment = "";
 	// kontrolli ainult siis, kui kasutaja vajutab "logi sisse" nuppu
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 		
@@ -70,15 +71,14 @@
 		<h2>Login</h2>
 
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"?>
-			<input name="email" type="email" placeholder="E-post">* value="<?php echo $email; ?>" <?php echo $email_error; ?><br> <br>
-			<input name="password" type="password" placeholder="parool">*
-<?php echo $password_error; ?> <br> <br>		
+			<input name="email" type="email" placeholder="E-post" value="<?php echo $email; ?>">* <?php echo $email_error; ?><br><br>
+			<input name="password" type="password" placeholder="parool">* <?php echo $password_error; ?><br><br>		
 		
 		<input name="login" type="submit" value="logi sisse"> 
 		
 		<h4>Create user</h4>
 	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"?>
-			<input name="email" type="email" placeholder="E-post">* value="<?php echo $email; ?>" <?php echo $email_error; ?><br> <br>
+			<input name="email" type="email" placeholder="E-post"* value="<?php echo $email; ?>"> <?php echo $email_error; ?><br> <br>
 			<input name="password" type="password" placeholder="parool">*
 <?php echo $password_error; ?> <br> <br>
 
