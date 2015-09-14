@@ -1,7 +1,7 @@
 <?php
  //lehe nimi
  $page_title = "Avaleht";
- 
+ // faili nimi
  $page_file_name = "home.php"
 
 ?>

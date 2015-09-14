@@ -12,35 +12,50 @@
 	$comment_error = "" ;
       //Muutujad väärtustega
 	 $email = "";
-
+	 $password = "";	
 	// kontrolli ainult siis, kui kasutaja vajutab "logi sisse" nuppu
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-		//kontrollime, et e-post ei oleks tühi		
-		if(empty($_POST["email"])) { 
-			$email_error = "Ei saa olla tühi";
-		} else {
-			
-			//annan väärtuse
-			$email = $_POST["email"];
-			
-		}
-		//kontrollime parooli	
-		if(empty($_POST["password"])) { 
-			$password_error = "Ei saa olla tühi";
-		} 
-		if(empty($_POST["comment"])) { 
-			$comment_error = "Ei saa olla tühi";
-		} else {
 		
-			//parooli pikkuse kontroll, kui see ei ole tühi			
-			if(strlen($_POST["password"])<8){
+		//kontrollin kas muutuja $_POST["login"] ehk kas inimene tahab sisse logida
+		if(isset($_POST["login"])){
+			
+			//kontrollime, et e-post ei oleks tühi		
+			if(empty($_POST["email"])) { 
+				$email_error = "Ei saa olla tühi";
+			} else {
 				
-				$password_error = "Peab olema vähemalt kaheksa sümbolit pikk";
-		
+				//annan väärtuse
+				$email = test_input($_POST["email"]);
+				
 			}
 		
+			//kontrollime parooli	
+			if(empty($_POST["password"])) { 
+				$password_error = "Ei saa olla tühi";
+			} else { 
+			  $password = test_input($_POST["password"]);
+			}
+		  
+			if(empty($_POST["comment"])) { 
+				$comment_error = "Ei saa olla tühi";
+			} else {
+				$comment = test_input($_POST["comment"]);
+			}
+
+
+
+		} elseif(isset($_POST["create"])){
+		
 		}
+		
+	}
+		
+		
+	function test_input($data) {
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
 	}
 ?>
 <?php
@@ -53,8 +68,16 @@
 <?php require_once("../header.php"); ?>
 	
 		<h2>Login</h2>
+
+	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"?>
+			<input name="email" type="email" placeholder="E-post">* value="<?php echo $email; ?>" <?php echo $email_error; ?><br> <br>
+			<input name="password" type="password" placeholder="parool">*
+<?php echo $password_error; ?> <br> <br>		
 		
-		<form action="<?php echo $_SERVER["PHP_SELF"]; method="post"?>"
+		<input name="login" type="submit" value="logi sisse"> 
+		
+		<h4>Create user</h4>
+	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"?>
 			<input name="email" type="email" placeholder="E-post">* value="<?php echo $email; ?>" <?php echo $email_error; ?><br> <br>
 			<input name="password" type="password" placeholder="parool">*
 <?php echo $password_error; ?> <br> <br>
@@ -67,12 +90,13 @@
 			<input name="option2" type="checkbox" value="o2"> Oskasin laadida githubi. 
 			<br>
 
-			<input type="submit" value="logi sisse"> 
-		</form>
+			<input name="login" type="submit" value="loo kasutaja"> 
+		</form>	
 		
-		<h4>Create user</h4>
+		
 		
 <?php
 		//laeme footer.php faili sisu
-		require_once("../footer.php"); ?>
-	
+		require_once("../footer.php"); 
+?>
+		
