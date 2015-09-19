@@ -10,6 +10,8 @@
 	$email_error = "" ;
 	$password_error = "" ;
 	$comment_error = "" ;
+	$email_2_error = "" ;
+	$password_2_error = "" ;
       //Muutujad väärtustega
 	 $email = "";
 	 $password = "";
@@ -47,8 +49,15 @@
 
 		} elseif(isset($_POST["create"])){
 		
+		if(empty($_POST["email_2"])) { 
+			$email_2_error = "Ei saa olla täitmata";
+		} 	else {
 		}
+			if(empty($_POST["password_2"])) { 
+			$password_2_error = "Ei saa olla täitmata";
 		
+		}	
+	}
 	}
 		
 		
