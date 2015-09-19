@@ -39,11 +39,11 @@
 			  $password = test_input($_POST["password"]);
 			}
 		  
-			if(empty($_POST["comment"])) { 
-				$comment_error = "Ei saa olla tühi";
-			} else {
-				$comment = test_input($_POST["comment"]);
-			}
+			//if(empty($_POST["comment"])) { 
+				//$comment_error = "Ei saa olla tühi";
+			//} else {
+			//	$comment = test_input($_POST["comment"]);
+			//}
 
 
 
@@ -79,27 +79,23 @@
 	
 		<h2>Login</h2>
 
-	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"?>
-			<input name="email" type="email" placeholder="E-post" value="<?php echo $email; ?>">* <?php echo $email_error; ?><br><br>
-			<input name="password" type="password" placeholder="parool">* <?php echo $password_error; ?><br><br>		
+	    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"?>
+			<input name="email" type="email" placeholder="E-post">*<?php echo $email_error; ?><br><br>
+			<input name="password" type="password" placeholder="parool">*<?php echo $password_error; ?><br><br>		
+			<input name="login" type="submit" value="logi sisse"> 
+		</form>
 		
-		<input name="login" type="submit" value="logi sisse"> 
-		
-		<h4>Create user</h4>
-	<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"?>
-			<input name="email" type="email" placeholder="E-post"* value="<?php echo $email; ?>"> <?php echo $email_error; ?><br> <br>
-			<input name="password" type="password" placeholder="parool">*
-<?php echo $password_error; ?> <br> <br>
-
-			<input name="comment" type="text" placeholder="comment">* <?php echo $comment_error; ?> <br> <br> 
+		<h2>Create user</h2>
+	        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"?>
+			<input name="email_2" type="email" placeholder="E-post">*<?php echo $email_2_error; ?><br> <br>
+			<input name="password_2" type="password" placeholder="parool">*<?php echo $password_2_error; ?> <br> <br>
+			<input name="comment" type="text" placeholder="comment"> <br> <br> 
 			<textarea name="comment1" type="text" cols= "40" rows= "5" placeholder="see võib tühi ka olla"></textarea> <br> <br>
 			<textarea name="comment2" type="text" cols= "60" rows= "5"> Enda tööks planeerin trennipäeviku koostamise. Tegemist võiks olla sellise asjaga, kuhu inimene kirjutab, et mis päevadel ja mida ta täpselt tegi. Andmete põhjal saaks siis teha erinevaid arvutusi ja järeldusi.</textarea> <br> <br>
-			<input name="option1" type="checkbox" value="o1"> Sain aru.
-			<br>
-			<input name="option2" type="checkbox" value="o2"> Oskasin laadida githubi. 
-			<br>
+			<input name="option1" type="checkbox" value="o1"> Sain aru. <br>
+			<input name="option2" type="checkbox" value="o2"> Oskasin laadida githubi. <br>
 
-			<input name="login" type="submit" value="loo kasutaja"> 
+			<input name="create" type="submit" value="loo kasutaja"> 
 		</form>	
 		
 		
